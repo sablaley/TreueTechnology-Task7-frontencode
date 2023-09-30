@@ -1,0 +1,74 @@
+backend
+=========
+
+1.install packages =  nodemon, express ,mongoose(connect with mongodb)
+2.create index.js
+3.create db folder
+4.//express middleware(client/postman/react se joh json data send krtey  hai usko handle/catch krta hai api ke andar)
+    app.use(express.json())
+6.Integrate sign up api in React
+5.solve CORS issue
+        == browser ke upar api hit krne ke baad ye error aati hai
+        == npm i cors  (use as middleware)  
+        app.use(cors())
+    
+frontend
+=========
+
+1. app.js
+2. routing (route means ak link ke upar ak complete page show krna hota hai)
+3. nav.js
+4. signup page create
+5. add signup data in local Storage
+( localstorage data page refresh hone ke baad bhi project mae rehta hai)
+6.Make private component
+
+mongodb
+=========
+mongo = issue commands
+mongod = take action on that commands, act as host process
+
+db folder
+config.js(mongodb connection code)
+User.js (schema,model)(tbl name is users)
+
+
+
+
+
+
+
+
+
+
+
+//connectio to db
+//for each collection there is model
+const express = require('express')
+const mongoose = require('mongoose')
+const app = express()
+async function connectDB ()  {
+    mongoose.connect('mongodb://127.0.0.1:27017/e-comm')//connection path/root
+    .then(() => console.log('connection successfully'))
+    .catch((err) => console.log('e'))
+    const productSchema = new mongoose.Schema({})
+    const products = mongoose.model('products', productSchema)
+    const data = await products.find()
+    console.warn(data);
+}
+
+connectDB()
+app.listen(5000) //run application on 5000 port
+
+// const connectDB = async () => {
+//     mongoose.connect('mongodb://127.0.0.1:27017/e-comm')
+//         .then(() => console.log('connection successfull'))
+//         .catch((err) => console.log('e'))
+//     const productSchema = new mongoose.Schema({})
+//     const products = mongoose.model('products', productSchema)
+//     const data = await products.find()
+//     console.warn(data);
+// }
+// connectDB()
+// app.get('/', (req, resp) => {
+//     resp.send('App is w
